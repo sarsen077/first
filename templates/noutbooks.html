@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Noutboklar</title>
+</head>
+<body>
+    <ul>
+        {% for noutboks in noutbook %}
+        <li>
+            {{noutboks}}
+        </li>
+        {% endfor %}
+    </ul>
+    {% for noutbok in noutbooklar %}
+    <h1>{{noutbok.model}}</h1>
+    <ul>
+        <li>
+            {{noutbok.price}}
+        </li>
+        <li>
+            {{noutbok.description}}
+        </li>
+    </ul>
+    <img src="{{noutbok.photo.url}}" alt="" width="250">
+    {% endfor %}
+</body>
+</html>
