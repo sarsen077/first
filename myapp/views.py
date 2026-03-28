@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import phones,noutbook
 
 def homepage(request):
@@ -14,3 +14,10 @@ def noutbokpage(request):
         'noutbooklar': noutbooks
     }
     return render(request,'noutbooks.html',context=context)
+
+def detail(request,id):
+    telefon = get_object_or_404(phones,id=id)
+    context = {
+        'telefon': telefon
+    }
+    return render(request,'detail.html',context=context)

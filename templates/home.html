@@ -5,30 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Pro Tech</title>
 </head>
 <body>
     <header>
         <p>Noutbooklar bolimine otiw ushin <a href="{% url 'noutbooks' %}">Noutbooklar bolimine</a> basin</p>
     </header>
-    <ul>
-        {% for phone in phones %}
-        <li>
-            {{phone}}
-        </li>
-        {% endfor %}
-    </ul>
-    {% for telefon in telefonlar %}
-    <h1>{{telefon.model}}</h1>
-    <ul>
-        <li>
-            {{telefon.price}}
-        </li>
-        <li>
-            {{telefon.description}}
-        </li>
-    </ul>
-    <img src="{{telefon.photo.url}}" alt="" width="250">
-    {% endfor %}
+    <section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4">
+         {% for telefon in telefonlar %}
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <a class="block relative h-48 rounded overflow-hidden" href="{% url 'podrobnee' telefon.id %}">
+          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{telefon.photo.url}}">
+        </a>
+        <div class="mt-4">
+          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+          <h2 class="text-white title-font text-lg font-medium">{{telefon.model}}</h2>
+          <p class="mt-1">{{telefon.price}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 </body>
 </html>
